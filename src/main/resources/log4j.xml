@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="file"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+		<param name="maxFileSize" value="100KB" />
+		<param name="maxBackupIndex" value="5" />
+		<!-- For Tomcat -->
+		<param name="file"
+			value="C:/My Program Files/log4j-application.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="file_ws"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="2048KB" />
+		<param name="maxBackupIndex" value="20" />
+		<param name="file"
+			value="C:/My Program Files/log4j-application-ws.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d - %t %x - %p - %C{1}.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+
+	<!-- level INFO needed to log SOAP messages -->
+	<logger name="org.apache.cxf.services" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="file_ws" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="INFO" />
+		<appender-ref ref="file_ws" />
+	</logger>
+	
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="file" />
+	</root>
+
+</log4j:configuration>
