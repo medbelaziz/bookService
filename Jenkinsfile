@@ -1,55 +1,28 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..................'
-            }
-        }
-         stage('Deploy') {
-            steps {
-                echo 'Deploying......................'
-            }
-        }
-        
-        /*
-        stage('Test') {
-                steps {
-                    sh 'mvn -B -DskipTests clean package' 
-                }
-                steps {
-                    echo 'Testing .................'
-                }
-        }*/
-    }
+        stage ('Compile Stage') {
 
-    post {
-        always {
-            junit 'build/*.xml'
-            echo 'One way or another, I have finished'
-            /* deleteDir()  clean up our workspace */
+            steps {
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn clean compile'
+                }
+            }
         }
-        success {
-            echo 'I succeeeded!'
-            /*
-            mail to: 'medbelaziz@gmail.com',
-            subject: "success Pipeline: ${currentBuild.fullDisplayName}",
-            body: "The ${env.BUILD_URL}  is complete with success "
-            */
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn test'
+                }
+            }
         }
-        unstable {
-            echo 'I am unstable :/'
-        }
-        failure {
-            echo 'I failed :('
-            /*
-            mail to: 'medbelaziz@gmail.com',
-            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Something is wrong with ${env.BUILD_URL}"
-            */
-        }
-        changed {
-            echo 'Things were different before...'
+        stage ('Install Stage') {
+            steps {
+                withMaven(maven : 'apache-maven-3.6.1') {
+                    bat 'mvn install'
+                }
+            }
         }
     }
 }
