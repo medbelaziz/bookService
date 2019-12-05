@@ -6,11 +6,13 @@ pipeline {
                 echo 'Building..................'
             }
         }
-         /*stage('Deploy') {
+         stage('Deploy') {
             steps {
                 echo 'Deploying......................'
             }
         }
+        
+        /*
         stage('Test') {
                 steps {
                     sh 'mvn -B -DskipTests clean package' 
