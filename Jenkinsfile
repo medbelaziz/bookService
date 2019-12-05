@@ -15,15 +15,15 @@ pipeline {
           }
         }
 
-        stage('error') {
+        stage('Deploy2') {
           steps {
-            echo 'From depoying 2 ..............'
+            echo 'From depoying 2..............'
           }
         }
 
         stage('Deploy3') {
           steps {
-            echo 'Deploy 3 ...................'
+            echo 'Deploy 3..................'
           }
         }
 
