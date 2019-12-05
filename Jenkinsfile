@@ -15,9 +15,15 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             echo 'From depoying 2 ..............'
+          }
+        }
+
+        stage('Deploy3') {
+          steps {
+            echo 'Deploy 3 ...................'
           }
         }
 
@@ -30,9 +36,6 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    Deploy2 = 'echo \'Deploy 2\''
   }
   post {
     always {
