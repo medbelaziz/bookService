@@ -6,8 +6,11 @@ pipeline {
                 echo 'Building..................'
             }
         }
-    }
-    stages {
+        stage('Deploy') {
+            steps {
+                echo 'Deploying......................'
+            }
+        }
         stage('Test') {
                 steps {
                     sh 'mvn -B -DskipTests clean package' 
@@ -17,13 +20,7 @@ pipeline {
                 }
         }
     }
-    stages {
-        stage('Deploy') {
-            steps {
-                echo 'Deploying......................'
-            }
-        }
-    }
+
     post {
         always {
             junit 'build/*.xml'
