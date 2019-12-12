@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        new PipelineJenkins()
         echo 'Building..................'
       }
     }
