@@ -1,19 +1,17 @@
 @Library('my-shared-library') _
 
 pipeline {
-  
-  
-
-agent any
+  agent any
   stages {
     stage('Build') {
       steps {
         echo 'Building..................'
-         new PipelineJenkins() 
+        new PipelineJenkins() 
       }
     }
-}
-/*
+  }
+
+/*    
 pipeline {
   agent any
   stages {
