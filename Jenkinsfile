@@ -13,17 +13,17 @@ pipeline {
 			}
 		}
 
-		stage('Build') { steps { build(msg:"Build") } }
+		stage('Build') { steps { build("Build") } }
 
 		stage('Deploy') {
 			parallel {
-				stage('Deploy1') { steps { deploy( msg:"Deploying1") } }
-				stage('Deploy2') { steps { deploy( msg:"Deploying2") } }
-				stage('Deploy3') { steps { deploy( msg:"Deploying3") } }
+				stage('Deploy1') { steps { deploy( "Deploying1") } }
+				stage('Deploy2') { steps { deploy( "Deploying2") } }
+				stage('Deploy3') { steps { deploy( "Deploying3") } }
 			}
 		}
 
-		stage('Test') { steps { test( msg: 'Testing' ) } }
+		stage('Test') { steps { test('Testing') } }
 	}
 	post {
 		always { echo 'One way or another, I have finished' }
