@@ -13,7 +13,7 @@ pipeline {
 			}
 		}
 
-		stage('Build') { steps { build("Build") } }
+		stage('Build') { steps { build.info("########## Build ###########") } }
 
 		stage('Deploy') {
 			parallel {
