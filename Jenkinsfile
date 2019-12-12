@@ -7,13 +7,19 @@ pipeline {
 		stage('Checkout') {
 			steps {
 				GitCheckout(
-						branch: "jenkins_conf",
-						url: "https://github.com/medbelaziz/bookService.git"
-						)
+					branch: "jenkins_conf",
+					url: "https://github.com/medbelaziz/bookService.git"
+					)
 			}
 		}
 
-		stage('Build') { steps { build.info("########## Build ###########") } }
+		stage('Build') { 
+			steps {
+				script{
+					build.info("########## Build ###########")
+				}
+			} 
+		}
 
 		stage('Deploy') {
 			parallel {
