@@ -23,7 +23,7 @@ pipeline {
 			}
 		}
 
-		stage('Test') { steps { test( smg: 'Testing .................' ) } }
+		stage('Test') { steps { test( msg: 'Testing .................' ) } }
 	}
 	post {
 		always { echo 'One way or another, I have finished' }
