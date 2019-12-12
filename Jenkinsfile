@@ -1,3 +1,12 @@
+@Library('my-shared-library') _
+
+pipeline {
+  
+  
+ new PipelineJenkins() 
+
+}
+/*
 pipeline {
   agent any
   stages {
@@ -60,3 +69,4 @@ pipeline {
 
   }
 }
+*/
