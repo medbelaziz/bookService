@@ -3,8 +3,15 @@
 pipeline {
   
   
- new PipelineJenkins() 
 
+agent any
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Building..................'
+         new PipelineJenkins() 
+      }
+    }
 }
 /*
 pipeline {
