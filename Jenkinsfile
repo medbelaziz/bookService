@@ -10,7 +10,7 @@ pipeline {
 				script{
 				echo "************PIPELINE Build**********************"
 				hostMap.putAt("AAA","aaaa")
-				buildPluging()
+				buildPluging(hostMap)
 				echo hostMap
 				}
 			} 
