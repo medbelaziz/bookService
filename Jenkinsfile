@@ -8,9 +8,9 @@ pipeline {
 		stage('Build') { 
 			steps {
 				script{
-				echo "************PIPELINE Build**********************"
 				hostMap.putAt("AAA","aaaa")
 				buildPluging(hostMap)
+				echo "************PIPELINE Build**********************"
 				echo hostMap["AAA"]
 				echo hostMap["BBB"]
 				}
