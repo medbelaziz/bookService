@@ -15,9 +15,11 @@ pipeline {
 
 		stage('Build') { 
 			steps {
-				hostMap.puAt("AAA","aaaa")
-				build("########## Build ###########")
-				echo hostMap
+				script{
+					hostMap.puAt("AAA","aaaa")
+					build("########## Build ###########")
+					echo hostMap
+				}
 				
 			} 
 		}
