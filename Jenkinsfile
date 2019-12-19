@@ -1,9 +1,9 @@
 @Library('my-shared-library') _
 
+hostMap
 pipeline {
 	agent any
 	stages {
-  
 		stage('Checkout') {
 			steps {
 				GitCheckout(
@@ -15,17 +15,16 @@ pipeline {
 
 		stage('Build') { 
 			steps {
-				script{
-					build.info("########## Build ###########")
-				}
+				hostMap.puAt("AAA","aaaa")
+				build("########## Build ###########")
+				echo hostMap
+				
 			} 
 		}
 
 		stage('Deploy') {
 			parallel {
 				stage('Deploy1') { steps { deploy( "Deploying1") } }
-				stage('Deploy2') { steps { deploy( "Deploying2") } }
-				stage('Deploy3') { steps { deploy( "Deploying3") } }
 			}
 		}
 
