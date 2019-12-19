@@ -17,26 +17,11 @@ pipeline {
 			steps {
 				script{
 					hostMap.puAt("AAA","aaaa")
-					build("########## Build ###########")
+					buildPluging()
 					echo hostMap
 				}
 				
 			} 
 		}
-
-		stage('Deploy') {
-			parallel {
-				stage('Deploy1') { steps { deploy( "Deploying1") } }
-			}
-		}
-
-		stage('Test') { steps { test('Testing') } }
-	}
-	post {
-		always { echo 'One way or another, I have finished' }
-		success { echo 'I succeeeded!' }
-		unstable { echo 'I am unstable :/' }
-		failure { echo 'I failed :(' }
-		changed { echo 'Things were different before...' }
 	}
 }
