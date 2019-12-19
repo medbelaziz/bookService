@@ -11,7 +11,8 @@ pipeline {
 				echo "************PIPELINE Build**********************"
 				hostMap.putAt("AAA","aaaa")
 				buildPluging(hostMap)
-				echo hostMap
+				echo hostMap["AAA"]
+				echo hostMap["BBB"]
 				}
 			} 
 		}
