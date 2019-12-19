@@ -1,6 +1,6 @@
 @Library('my-shared-library') _
 
-hostMap
+hostMap : [:]
 pipeline {
 	agent any
 	stages {
