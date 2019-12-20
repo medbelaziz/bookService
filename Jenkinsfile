@@ -7,7 +7,7 @@ pipeline {
 
 		stage('Prepare') { 
 			steps {  
-				testPlugin()
+					testPlugin()
 			}
 		}
 		stage('Build') { 
