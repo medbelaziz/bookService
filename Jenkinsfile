@@ -5,6 +5,9 @@ pipeline {
 	agent any
 	stages {
 
+		stage('Prepare') { 
+			      Utils.markStageSkippedForConditional(STAGE_NAME)
+		}
 		stage('Build') { 
 			steps {
 				script{
