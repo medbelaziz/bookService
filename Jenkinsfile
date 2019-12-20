@@ -6,7 +6,9 @@ pipeline {
 	stages {
 
 		stage('Prepare') { 
-			steps {  script{    Utils.markStageSkippedForConditional("Prepare") }}
+			steps {  
+				testPlugin()
+			}
 		}
 		stage('Build') { 
 			steps {
