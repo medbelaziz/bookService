@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage('Build') { 
 			steps {
-				buildPluging(hostMap)
+				//buildPluging(hostMap)
 				withCredentials([
 					string(credentialsId: "ansible_cleAPI", variable: 'CLEAPI'), 
         				string(credentialsId: "ansible_clePublique", variable: 'CLEPUBLIQUE')
