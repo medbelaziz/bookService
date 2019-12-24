@@ -13,7 +13,7 @@ pipeline {
 						 echo "CLEAPI => " + CLEAPI
 						 echo "CLEPUBLIQUE => " + CLEPUBLIQUE
 				}
-				withCredentials([sshUserPrivateKey(credentialsId: 'ansible_cleAPI', keyFileVariable: 'tmpVariable', passphraseVariable: 'exemple passPhrase', usernameVariable: 'mohammed')]) {
+				withCredentials([sshUserPrivateKey(credentialsId: 'ansible_KEY_API', keyFileVariable: 'tmpVariable', passphraseVariable: 'exemple passPhrase', usernameVariable: 'mohammed')]) {
 						echo "*************************************"
 						echo "tmpVariable => " + tmpVariable
 				}
