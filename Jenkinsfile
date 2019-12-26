@@ -6,7 +6,7 @@ pipeline {
 		
 		stage('Build') { 
 			steps {
-				//cleanWs()
+				cleanWs()
 				//buildPluging(hostMap)
 				withCredentials([
 					string(credentialsId: "ansible_cleAPI", variable: 'CLEAPI'), 
