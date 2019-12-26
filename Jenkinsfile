@@ -3,8 +3,10 @@ hostMap = [:]
 pipeline {
 	agent any
 	stages {
+		
 		stage('Build') { 
 			steps {
+				cleanWs()
 				//buildPluging(hostMap)
 				withCredentials([
 					string(credentialsId: "ansible_cleAPI", variable: 'CLEAPI'), 
