@@ -3,23 +3,18 @@ hostMap = [:]
 pipeline {
 	agent any
 	stages {
-		
-		stage('Build') { 
+		stage('Example') {
+			input {
+				message "Should we continue?"
+				ok "Yes, we should."
+				submitter "alice,bob"
+				parameters {
+				string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+				}
+			}
 			steps {
-				cleanWs()
-				//buildPluging(hostMap)
-				withCredentials([
-					string(credentialsId: "ansible_cleAPI", variable: 'CLEAPI'), 
-        				string(credentialsId: "ansible_clePublique", variable: 'CLEPUBLIQUE')
-					 ]) {
-						 echo "CLEAPI => " + CLEAPI
-						 echo "CLEPUBLIQUE => " + CLEPUBLIQUE
-				}
-				withCredentials([sshUserPrivateKey(credentialsId: 'ansible_KEY_API', keyFileVariable: 'tmpVariable', passphraseVariable: 'exemple passPhrase', usernameVariable: 'mohammed')]) {
-						echo "*************************************"
-						echo "tmpVariable => " + tmpVariable
-				}
-			} 
+				echo "Hello, ${PERSON}, nice to meet you."
+			}
 		}
 	}
 }
