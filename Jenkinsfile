@@ -3,8 +3,13 @@ hostMap = [:]
 pipeline {
 	agent any
 	stages {
-		stage('Example') {
-		echo "currentBuild.number => $currentBuild.number"
+		stage('Example 1') {
+			steps() {
+				echo "currentBuild.number => $currentBuild.number"
+			}
+		}
+		
+		stage('Example 2') {
 
 			when {
 				anyOf {
