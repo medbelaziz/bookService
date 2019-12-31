@@ -5,7 +5,9 @@ pipeline {
 	stages {
 		stage('Example') {
 	    		steps() {
-				appPlugin()
+				script{
+					appPlugin()
+				}
 			}
 		}
 	}
