@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage('Example') {
 	    		steps() {
-				testPlugin()
+				appPlugin()
 			}
 		}
 	}
