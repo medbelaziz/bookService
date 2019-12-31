@@ -6,14 +6,10 @@ pipeline {
 		stage('Example') {
 			input {
 				message "Should we continue?"
-				ok "Yes"
-				parameters {
-				booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-				}
+				ok "Continue"
 			}
 			steps {
-				echo "Hello, ${TOGGLE}, nice to meet you."
+				echo "Hello, nice to meet you."
 			}
 		}
 	}
