@@ -14,7 +14,7 @@ pipeline {
 			}
 	    		steps() {
 				
-				sh 'echo $currentBuild.number' 
+				echo "currentBuild.number => $currentBuild.number"
 				Application()
 			}
 		}
