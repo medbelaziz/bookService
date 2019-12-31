@@ -9,11 +9,13 @@ pipeline {
 				ok "Yes, we should."
 				submitter "alice,bob"
 				parameters {
-				string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+				booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+				/*string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')*/
 				}
 			}
 			steps {
-				echo "Hello, ${PERSON}, nice to meet you."
+				echo "Hello, ${TOGGLE}, nice to meet you."
 			}
 		}
 	}
