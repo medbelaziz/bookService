@@ -14,8 +14,9 @@ pipeline {
             }
         }
         
-        parallel {
-            stage('Nb Machines') {
+        
+        stage('Nb Machines') {
+            parallel {
                 steps() {
                     script{
                         listRollbackHosts.each { key, value ->
