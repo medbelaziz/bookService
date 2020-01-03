@@ -14,7 +14,7 @@ pipeline {
     stage('Build and Test') {
      parallel {
 		
-		hostMap.each{ it ->
+		hostMap.each{
 		
 			stage("Build and Test Linux") {
 
