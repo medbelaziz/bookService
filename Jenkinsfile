@@ -17,22 +17,24 @@ pipeline {
          
         stage('Nb Machines') {
             parallel {
-                steps() {
-                    script{
-                        listRollbackHosts.each { key, value ->
-                            stage('Test On Windows') {
-                                steps {
-                                    echo "Windows ${key}"
+                stage('Nb Machines nested') {
+                    steps() {
+                        script{
+                            listRollbackHosts.each { key, value ->
+                                stage('Test On Windows') {
+                                    steps {
+                                        echo "Windows ${key}"
+                                    }
                                 }
-                            }
-                            stage('Test On Unix') {
-                                steps {
-                                    echo "Unix ${key}"
+                                stage('Test On Unix') {
+                                    steps {
+                                        echo "Unix ${key}"
+                                    }
                                 }
-                            }
-                            stage('Test On Apple') {
-                                steps {
-                                    echo "Apple ${key}"
+                                stage('Test On Apple') {
+                                    steps {
+                                        echo "Apple ${key}"
+                                    }
                                 }
                             }
                         }
