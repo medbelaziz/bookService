@@ -22,19 +22,13 @@ pipeline {
                         script{
                             hostMap.each { key, value ->
                                 stage('Test On Windows') {
-                                    steps {
                                         echo "Windows ${key}"
-                                    }
                                 }
                                 stage('Test On Unix') {
-                                    steps {
                                         echo "Unix ${key}"
-                                    }
                                 }
                                 stage('Test On Apple') {
-                                    steps {
                                         echo "Apple ${key}"
-                                    }
                                 }
                             }
                         }
