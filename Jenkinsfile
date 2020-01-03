@@ -13,7 +13,7 @@ pipeline {
 	}
     stage('Build and Test') {
      parallel {
-		
+	     node{
 		hostMap.each{
 		
 			stage("Build and Test Linux") {
@@ -32,7 +32,8 @@ pipeline {
 				}
 
 			}
-		}	
+		}
+	     }
       }
     }
   }
