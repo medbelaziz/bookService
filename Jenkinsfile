@@ -14,13 +14,13 @@ pipeline {
             }
         }
         
-         /*
+         
         stage('Nb Machines') {
             parallel {
                 steps() {
                     script{
                         listRollbackHosts.each { key, value ->
-                            tage('Test On Windows') {
+                            stage('Test On Windows') {
                                 steps {
                                     echo "Windows ${key}"
                                 }
@@ -40,7 +40,7 @@ pipeline {
                 }
             }
         }
-       */
+       
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
