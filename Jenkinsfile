@@ -16,10 +16,11 @@ pipeline {
         
          
         stage('Nb Machines') {
-            parallel {
-                stage('Nb Machines nested') {
-                    steps() {
-                        script{
+            
+            stage('Nb Machines nested') {
+                steps() {
+                    script{
+                        parallel {
                             hostMap.each { key, value ->
                                 stage('Test On Windows') {
                                         echo "Windows ${key}"
