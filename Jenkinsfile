@@ -5,10 +5,12 @@ pipeline {
     stages {
         stage('Prepare'){
             steps {
-                echo "Prepare"
-                hostMap.putAt("1","1")
-                hostMap.putAt("2","2")
-                hostMap.putAt("3","3")
+                script{
+                    echo "Prepare"
+                    hostMap.putAt("1","1")
+                    hostMap.putAt("2","2")
+                    hostMap.putAt("3","3")
+                }
             }
         }
         
