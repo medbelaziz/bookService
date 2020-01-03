@@ -16,7 +16,6 @@ pipeline {
 					choices.each{
 						echo "----- $it -------------"	
 						if(it.getValue()){
-							echo "----- $it -------------"	
 							listFiltre.add(it.getKey())	
 						}
 					}
