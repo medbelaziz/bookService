@@ -18,8 +18,8 @@ pipeline {
         stage('Nb Machines') {
             steps() {
                 script{
-                    parallel {
-                        hostMap.each { key, value ->
+                    hostMap.each { key, value ->
+                        parallel {
                             stage('Test On Windows') {
                                     echo "Windows ${key}"
                             }
