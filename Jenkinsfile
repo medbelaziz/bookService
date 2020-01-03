@@ -14,7 +14,7 @@ pipeline {
             }
         }
         
-        
+         /*
         stage('Nb Machines') {
             parallel {
                 steps() {
@@ -40,7 +40,7 @@ pipeline {
                 }
             }
         }
-        /*
+       */
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
@@ -54,6 +54,6 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
     }
 }
