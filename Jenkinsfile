@@ -9,10 +9,10 @@ def parallelStagesMap = jobs.collectEntries {
 def generateStage(job) {
     return {
         stage("aaaaaaaaaaaa"){
-            stage("stage: ${job}") {
+            stage("stage ${job}") {
                     echo "This is ${job}."
             }
-            stage("stage: MED ") {
+            stage("stage MED ") {
                     echo "This is MED."
             }
         }
