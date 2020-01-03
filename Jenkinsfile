@@ -12,6 +12,11 @@ pipeline {
 					hostsMap.putAt("3","tree")
 					def listParam = createBooleanParamList(hostsMap)
 					def choices = input message: 'Remplir ça!!', parameters: listParam
+					choices.each{
+					        echo "----- $it -------------"						
+					}
+					
+
 				}
 			}
 		}
