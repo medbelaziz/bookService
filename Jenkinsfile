@@ -25,8 +25,8 @@ pipeline {
                                 }
                             }
                         }
-                    }
                     parallel tests
+                    }
                 }
             }
         }       
