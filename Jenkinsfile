@@ -15,6 +15,12 @@ def generateStage(job) {
             stage(" MED ") {
                     echo "This is MED."
             }
+            stage(" ${job}") {
+                    echo "This is ${job}."
+            }
+            stage(" MED ") {
+                    echo "This is MED."
+            }
         }
     }
 }
