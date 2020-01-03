@@ -20,7 +20,7 @@ pipeline {
                 stage('Nb Machines nested') {
                     steps() {
                         script{
-                            listRollbackHosts.each { key, value ->
+                            hostMap.each { key, value ->
                                 stage('Test On Windows') {
                                     steps {
                                         echo "Windows ${key}"
