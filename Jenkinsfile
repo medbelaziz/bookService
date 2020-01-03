@@ -11,7 +11,7 @@ pipeline {
 					hostsMap.putAt("2","Two")
 					hostsMap.putAt("3","tree")
 					def listParam = createBooleanParamList(hostsMap)
-					def choices = input message: '', parameters: listParam
+					def choices = input message: 'Remplir ça!!', parameters: listParam
 				}
 			}
 		}
