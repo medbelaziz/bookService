@@ -1,42 +1,43 @@
 @Library('my-shared-library') _
 hostMap = [:]
 pipeline {
-    agent { label "master"}
-    stages {
-        stage('Prepare'){
-            steps {
-                script{
-                    echo "Prepare"
-                    hostMap.putAt("1","1")
-                    hostMap.putAt("2","2")
-                    hostMap.putAt("3","3")
-                }
+  agent { label 'master' }
+  stages {
+    stage('Build and Test') {
+      parallel {
+        stage("Build and Test Linux") {
+          stages {
+            stage("Build (Linux)") {
+              agent any
+              steps {
+                echo "Inside for loop 1"
+              }
             }
+            stage("Test (Linux)") {
+              agent any
+              steps {
+                echo "Inside for loop 2"
+              }
+            }
+          }
         }
-        stage('BUild') {
-            steps {
-                script {
-                    def tests = [:]
-                    hostMap.each{ key,value ->
-                        tests["${key}"] = {
-                            node {
-                                stage('nested'){
-                                   stage("1") {
-                                        echo '1'
-                                    }
-                                    stage("2") {
-                                        echo '2'
-                                    }
-                                    stage("3") {
-                                        echo '3'
-                                    } 
-                                }
-                            }
-                        }
-                    parallel tests
-                    }
-                }
+        stage("Build and Test Windows") {
+          stages {
+            stage("Build (Windows)") {
+              agent any
+              steps {
+                echo "Inside for loop 3"
+              }
             }
-        }       
+            stage("Test (Windows)") {
+              agent any
+              steps {
+                echo "Inside for loop 4"
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }
