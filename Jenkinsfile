@@ -3,6 +3,41 @@ hostMap = [:]
 pipeline {
     agent any
     stages {
+        stage('Prepare'){
+            steps {
+                echo "Prepare"
+                hostMap.putAt("1","1")
+                hostMap.putAt("2","2")
+                hostMap.putAt("3","3")
+            }
+        }
+        
+        parallel {
+            stage('Nb Machines') {
+                steps() {
+                    script{
+                        listRollbackHosts.each { key, value ->
+                            tage('Test On Windows') {
+                                steps {
+                                    echo "Windows ${key}"
+                                }
+                            }
+                            stage('Test On Unix') {
+                                steps {
+                                    echo "Unix ${key}"
+                                }
+                            }
+                            stage('Test On Apple') {
+                                steps {
+                                    echo "Apple ${key}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /*
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
@@ -16,6 +51,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }
