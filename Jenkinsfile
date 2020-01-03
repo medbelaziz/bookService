@@ -12,6 +12,10 @@ def generateStage(job) {
                 echo "This is ${job}."
                 sh script: "sleep 15"
         }
+        stage("stage: MED ") {
+                echo "This is ${job}."
+                sh script: "sleep 15"
+        }
     }
 }
 
