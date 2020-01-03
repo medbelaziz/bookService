@@ -1,51 +1,34 @@
 @Library('my-shared-library') _
 hostMap = [:]
+def jobs = ["JobA", "JobB", "JobC"]
+
+def parallelStagesMap = jobs.collectEntries {
+    ["${it}" : generateStage(it)]
+}
+
+def generateStage(job) {
+    return {
+        stage("stage: ${job}") {
+                echo "This is ${job}."
+                sh script: "sleep 15"
+        }
+    }
+}
+
 pipeline {
     agent any
+
     stages {
-        stage('Prepare'){
+        stage('non-parallel stage') {
             steps {
-                script{
-                    echo "Prepare"
-                    hostMap.putAt("1","1")
-                    hostMap.putAt("2","2")
-                    hostMap.putAt("3","3")
-                }
+                echo 'This stage will be executed first.'
             }
         }
-        
-         
-        stage('Nb Machines') {
-            steps() {
-                script{
-                    hostMap.each { key, value ->
-                        parallel {
-                            stage('Test On Windows') {
-                                    echo "Windows ${key}"
-                            }
-                            stage('Test On Unix') {
-                                    echo "Unix ${key}"
-                            }
-                            stage('Test On Apple') {
-                                    echo "Apple ${key}"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-       
-        stage('Run Tests') {
-            parallel {
-                stage('Test On Windows') {
-                    steps {
-                        echo "run-tests.bat"
-                    }
-                }
-                stage('Test On Linux') {
-                    steps {
-                        echo "run-tests.sh"
-                    }
+
+        stage('parallel stage') {
+            steps {
+                script {
+                    parallel parallelStagesMap
                 }
             }
         }
