@@ -20,8 +20,16 @@ pipeline {
                     hostMap.each{ key,value ->
                         tests["${key}"] = {
                             node {
-                                stage("${key}") {
-                                    echo '${key}'
+                                stage('nested'){
+                                   stage("1") {
+                                        echo '1'
+                                    }
+                                    stage("2") {
+                                        echo '2'
+                                    }
+                                    stage("3") {
+                                        echo '3'
+                                    } 
                                 }
                             }
                         }
