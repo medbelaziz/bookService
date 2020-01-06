@@ -4,7 +4,7 @@ hostMap = [:]
 pipeline {
   	agent any
 	stages {
-		stage('Build and Test') {
+		stage('Prepare') {
 			steps{
 				script{				
 					hostMap.putAt("1","one")
