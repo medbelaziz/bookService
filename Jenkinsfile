@@ -18,7 +18,7 @@ pipeline {
 				script{
 					hostMap.eachWithIndex { key, val, index ->
 						
-						stage("Désactiver TDV [${ansibleHost}]") {
+						stage("Désactiver TDV [${val}]") {
 							when{
 								equals expected: 0, actual: index 
 							}
