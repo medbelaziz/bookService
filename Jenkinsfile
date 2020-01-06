@@ -10,9 +10,22 @@ pipeline {
 					hostMap.putAt("1","one")
 					hostMap.putAt("2","two")
 					hostMap.putAt("3","tree")
-
+				}
+			}
+		}
+		stage('Build and Test') {
+			steps{
+				script{
 					hostMap.eachWithIndex { key, val, index ->
-						echo "#index => $index #Key => $key #Value =>  $val"
+						
+						stage("Désactiver TDV [${ansibleHost}]") {
+							when{
+								equals expected: 0, actual: index 
+							}
+							echo "#Index => $index "
+
+						}
+
 					}
 				}
 			}
