@@ -19,11 +19,8 @@ pipeline {
 					hostMap.eachWithIndex { key, val, index ->
 						
 						stage("Désactiver TDV [${val}]") {
-							when{
-								equals expected: 0, actual: index 
-							}
-							steps{
-							echo "#Index => $index "
+							if(index==0){
+								echo "#Index => $index "
 							}
 							
 
