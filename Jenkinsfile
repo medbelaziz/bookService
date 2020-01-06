@@ -10,7 +10,6 @@ pipeline {
 					hostMap.putAt("1","one")
 					hostMap.putAt("2","two")
 					hostMap.putAt("3","tree")
-					println "free -m".execute().text
 				}
 			}
 		}
