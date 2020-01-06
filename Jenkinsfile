@@ -2,39 +2,22 @@
 hostMap = [:]
 
 pipeline {
-  agent { label 'master' }
-  stages {
-    stage('Build and Test') {
-		steps{
-			hostMap.add("1")
-			hostMap.add("2")
-			hostMap.add("3")
-		}
-	}
-    stage('Build and Test') {
-     parallel {
-	     script{
-		hostMap.each{
-		
-			stage("Build and Test Linux") {
+  	agent any
+	stages {
+		stage('Build and Test') {
+			steps{
+				script{				
+					hostMap.putAt("1","one")
+					hostMap.putAt("1","two")
+					hostMap.putAt("1","tree")
 
-				stages {
-					stage("Build (Linux)") {
-						steps {
-							echo "Inside for loop 1"
-						}
-					}
-					stage("Test (Linux)") {
-						steps {
-							echo "Inside for loop 2"
-						}
+					hostMap.eachWithIndex { key, val, index ->
+						echo "index => $index "
+						echo "Key => $key "
+						echo "Value =>  $val"
 					}
 				}
-
 			}
 		}
-	     }
-      }
-    }
-  }
+	}
 }
