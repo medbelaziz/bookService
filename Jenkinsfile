@@ -8,8 +8,8 @@ pipeline {
 			steps{
 				script{				
 					hostMap.putAt("1","one")
-					hostMap.putAt("1","two")
-					hostMap.putAt("1","tree")
+					hostMap.putAt("2","two")
+					hostMap.putAt("3","tree")
 
 					hostMap.eachWithIndex { key, val, index ->
 						echo "#index => $index #Key => $key #Value =>  $val"
