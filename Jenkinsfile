@@ -22,7 +22,10 @@ pipeline {
 							when{
 								equals expected: 0, actual: index 
 							}
+							steps{
 							echo "#Index => $index "
+							}
+							
 
 						}
 
