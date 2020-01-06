@@ -12,9 +12,7 @@ pipeline {
 					hostMap.putAt("1","tree")
 
 					hostMap.eachWithIndex { key, val, index ->
-						echo "index => $index "
-						echo "Key => $key "
-						echo "Value =>  $val"
+						echo "#index => $index #Key => $key #Value =>  $val"
 					}
 				}
 			}
