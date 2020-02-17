@@ -15,7 +15,6 @@ pipeline {
                 build job: 'job1' , wait: true
             }
         }
-    }
     
     stage('Deploy') {
         steps {
