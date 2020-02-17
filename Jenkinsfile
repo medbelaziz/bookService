@@ -4,22 +4,22 @@ hostMap = [:]
 pipeline {
     agent any
     stages {
-        /*stage('Test') {
+        stage('Test') {
             steps {
-                sh 'echo "Fail! #######################"'
+               echo "Fail! #######################"
             }
-        }*/
+        }
     stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'echo "Deploying #######################"'
+                    echo "Deploying #######################"
                 }
 
                 timeout(time: 2, unit: 'MINUTES') {
                     sh 'time out .....'
                 }
                 sleep(time:3,unit:"SECONDS"){
-                    sh 'echo "Sleeping finiched #######################"'   
+                    echo "Sleeping finiched #######################"
                 }
             }
         }
