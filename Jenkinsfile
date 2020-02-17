@@ -12,19 +12,15 @@ pipeline {
     stage('Deploy') {
             steps {
                 retry(3) {
-                    echo "Deploying #######################"
+                    //bat 'sleep 300'
+                    echo " ################ "
                 }
 
-                sleep(time: 1, unit: 'MINUTES'){
-                    echo "Sleeping finiched #######################"
-                }
+                sleep(time: 1, unit: 'MINUTES')
             }
         }
     }
-    stage ("wait_for_testing")
-    {
-       bat 'sleep 300'
-    }
+
     post {
         always {
             echo 'This will always run'
