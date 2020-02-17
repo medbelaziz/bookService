@@ -10,22 +10,23 @@ pipeline {
             }
         }
         
-    stage('Runinng JOB 1') {
-            steps {
-                build job: 'job1' , wait: true
-            }
-        }
-    
-    stage('Deploy') {
-        steps {
-            retry(3) {
-                //bat 'sleep 300'
-                echo " ################ "
-            }
-            sleep(time: 1, unit: 'MINUTES')
-        }
-    }
-
+		stage('Runinng JOB 1') {
+			steps {
+				build job: 'job1' , wait: true
+			}
+		}
+		
+		stage('Deploy') {
+			steps {
+				retry(3) {
+					//bat 'sleep 300'
+					echo " ################ "
+				}
+				sleep(time: 1, unit: 'MINUTES')
+			}
+		}
+	}
+	
     post {
         always {
             echo 'This will always run'
