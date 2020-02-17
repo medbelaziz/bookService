@@ -20,6 +20,13 @@ pipeline {
             }
         }
     }
+    stage('Runinng JOB 1') {
+            steps {
+                    build job: 'job1' , wait: true
+            }
+        }
+    }
+    
 
     post {
         always {
