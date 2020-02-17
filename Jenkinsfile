@@ -15,14 +15,15 @@ pipeline {
                     echo "Deploying #######################"
                 }
 
-                timeout(time: 2, unit: 'MINUTES') {
-                    echo 'time out .....'
-                }
                 sleep(time: 1, unit: 'MINUTES'){
                     echo "Sleeping finiched #######################"
                 }
             }
         }
+    }
+    stage ("wait_for_testing")
+    {
+       bat 'sleep 300'
     }
     post {
         always {
