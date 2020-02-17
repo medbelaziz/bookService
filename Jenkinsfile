@@ -9,7 +9,7 @@ pipeline {
                echo "Fail! #######################"
             }
         }
-    }
+    
     stage('Deploy') {
             steps {
                 retry(3) {
@@ -20,7 +20,7 @@ pipeline {
                 sleep(time: 1, unit: 'MINUTES')
             }
         }
-    }
+    
     stage('Runinng JOB 1') {
             steps {
                     build job: 'job1' , wait: true
