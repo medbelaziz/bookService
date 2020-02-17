@@ -3,7 +3,7 @@ hostMap = [:]
 
 pipeline {
     agent any
-    /stages {
+    stages {
         /*stage('Test') {
             steps {
                 sh 'echo "Fail! #######################"'
