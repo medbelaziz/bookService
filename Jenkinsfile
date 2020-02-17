@@ -9,6 +9,7 @@ pipeline {
                echo "Fail! #######################"
             }
         }
+    }
     stage('Deploy') {
             steps {
                 retry(3) {
