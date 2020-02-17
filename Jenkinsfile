@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+//@Library('my-shared-library') _
 hostMap = [:]
 
 pipeline {
@@ -6,17 +6,20 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                sh 'echo "Fail! #######################"'"'
             }
         }
     stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'echo "Deploying ..."'
+                    sh 'echo "Deploying #######################"'"'
                 }
 
                 timeout(time: 2, unit: 'MINUTES') {
                     sh 'time out .....'
+                }
+                sleep(time:3,unit:"SECONDS"){
+                    sh 'echo "Sleeping finiched #######################"'   
                 }
             }
         }
