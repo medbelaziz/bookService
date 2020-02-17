@@ -22,7 +22,7 @@ pipeline {
 		}
 		stage('Runinng JOB 3') {
 			steps {
-				build job: 'job2' , wait: true
+				build job: 'job3' , wait: true
 			}
 		}
 		
