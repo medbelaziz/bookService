@@ -3,12 +3,12 @@ hostMap = [:]
 
 pipeline {
     agent any
-    stages {
-        stage('Test') {
+    /stages {
+        /*stage('Test') {
             steps {
                 sh 'echo "Fail! #######################"'
             }
-        }
+        }*/
     stage('Deploy') {
             steps {
                 retry(3) {
