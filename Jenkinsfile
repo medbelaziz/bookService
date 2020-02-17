@@ -18,7 +18,7 @@ pipeline {
                 timeout(time: 2, unit: 'MINUTES') {
                     echo 'time out .....'
                 }
-                sleep(time:3,unit:"SECONDS"){
+                sleep(time: 1, unit: 'MINUTES'){
                     echo "Sleeping finiched #######################"
                 }
             }
