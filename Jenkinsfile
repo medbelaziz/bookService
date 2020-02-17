@@ -15,6 +15,11 @@ pipeline {
 			build job: 'job1' , wait: true
 		}
 	}
+	stage('Runinng JOB 2') {
+		steps {
+			build job: 'job2' , wait: true
+		}
+	}
 
 	stage('Deploy') {
 		steps {
@@ -22,7 +27,7 @@ pipeline {
 				//bat 'sleep 300'
 				echo " ################ "
 			}
-			sleep(time: 1, unit: 'MINUTES')
+			//sleep(time: 1, unit: 'MINUTES')
 		}
 	}
 }
