@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'echo "Fail! #######################"'"'
+                sh 'echo "Fail! #######################"'
             }
         }
     stage('Deploy') {
             steps {
                 retry(3) {
-                    sh 'echo "Deploying #######################"'"'
+                    sh 'echo "Deploying #######################"'
                 }
 
                 timeout(time: 2, unit: 'MINUTES') {
