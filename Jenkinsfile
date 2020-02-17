@@ -16,7 +16,7 @@ pipeline {
                 }
 
                 timeout(time: 2, unit: 'MINUTES') {
-                    sh './health-check.sh'
+                    sh 'time out .....'
                 }
             }
         }
