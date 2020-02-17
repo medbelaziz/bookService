@@ -15,6 +15,16 @@ pipeline {
 				build job: 'job1' , wait: true
 			}
 		}
+		stage('Runinng JOB 2') {
+			steps {
+				build job: 'job2' , wait: true
+			}
+		}
+		stage('Runinng JOB 3') {
+			steps {
+				build job: 'job2' , wait: true
+			}
+		}
 		
 		stage('Deploy') {
 			steps {
