@@ -2,52 +2,26 @@
 hostMap = [:]
 
 pipeline {
-    agent any
-    stages {
-        stage('Test') {
-            steps {
-               echo "Fail! #######################"
-            }
-        }
-        
-	stage('Runinng JOB 1') {
-		steps {
-			build job: 'job1' , wait: true
-		}
-	}
-	stage('Runinng JOB 2') {
-		steps {
-			build job: 'job2' , wait: true
-		}
-	}
-
-	stage('Deploy') {
-		steps {
-			retry(3) {
-				//bat 'sleep 300'
-				echo " ################ "
+    agent none
+	stages {
+		stage('Prepare') {
+			agent any
+			steps {
+				echo "Preparing ..."
 			}
-			//sleep(time: 1, unit: 'MINUTES')
+		}
+
+		stage('Runinng JOB 1') {
+			steps {
+				build job: 'job1' , wait: true
+			}
+		}
+
+		stage('Deploy') {
+			agent any
+			steps {
+				echo " Deploying .... "
+			}
 		}
 	}
-}
-	
-    post {
-        always {
-            echo 'This will always run'
-        }
-        success {
-            echo 'This will run only if successful'
-        }
-        failure {
-            echo 'This will run only if failed'
-        }
-        unstable {
-            echo 'This will run only if the run was marked as unstable'
-        }
-        changed {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
-        }
-    }
 }
