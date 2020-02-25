@@ -8,6 +8,7 @@ pipeline {
 			agent any
 			steps {
 				echo "Preparing ..."
+				println "free -m".execute().text
 			}
 		}
 
